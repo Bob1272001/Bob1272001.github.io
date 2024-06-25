@@ -1,3 +1,15 @@
-h1{
-    background-color: blue;
+
+.questionAboutDefense, .Name, .team{
+    margin: 5 0 0 0;
+}
+
+.autonomous{
+    margin-bottom: 5px;
+
+}
+.Amp, .Speaker {
+    margin-bottom: 10px;
+}
+.Name {
+    font-weight: 200;
 }

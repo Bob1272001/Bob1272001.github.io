@@ -5,6 +5,8 @@
     <title>4795 Scouting Data Input</title>
     <link rel="stylesheet" href="Scouting.css">
     <script src="Scouting.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
+
 </head>
 
 <body>
@@ -32,8 +34,10 @@
     <form id="auto">
         <label for="Mobility"> Did the Robot Move in Auto?</label>
         <input type="checkbox" id="Mobility"> <br>
-        <input type="text" placeholder="Amp Notes Scored" class="Amp"> <br>
-        <input type="text" placeholder="Speaker Notes Scored" class="Speaker"> <br>
+        <input type="text" placeholder="Amp Notes Scored" class="Amp" id = "Amp"> 
+        <input type="text" placeholder="Amp Notes Missed" class="Amp" id = "AmpMissed"> <br>
+        <input type="text" placeholder="Speaker Notes Scored" class="Speaker" id = "Speaker"> 
+        <input type="text" placeholder="Speaker Notes Missed" class="Speaker" id = "SpeakerMissed"> <br>
         <label for="PictureOfAuto">Upload a picture of the auto path: </label>
         <input type="file" id="PictureOfAuto">
 
@@ -66,6 +70,10 @@
         <p>Comments About the Robot:</p>
         <input type="text" placeholder="Comments">
     </form>
+
+    <button onclick="generateQRCode()"> Submit </button>
+
+    <div id="qrcode"></div>
 </body>
 
 </html>

@@ -6,72 +6,58 @@
     <link rel="stylesheet" href="Scouting.css">
     <script src="Scouting.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
-
 </head>
 
 <body>
 
     <h1>Input data here</h1>
 
-    <form id="matchNumber">
-        <label for="Match">Enter the match number: </label> <br>
+    <form id="scoutingForm">
+        <label for="Match">Enter the match number:</label><br>
+        <input type="text" id="Match" name="Match" placeholder="ex. Q24"><br>
 
-        <input type=text id="Match" placeholder="ex. Q24">
-    </form>
+        <label for="Name">Enter your name:</label><br>
+        <input type="text" id="Name" name="Name" placeholder="Scouter" required><br>
 
-    <form id="scouterName">
-        <label for="Name"> Enter your name</label> <br>
-        <input class="Name" type="text" id="Name" placeholder="Scouter" required>
-    </form>
+        <label for="team">Enter the Team's Number:</label><br>
+        <input type="text" id="team" name="team" placeholder="ex. 4795" required><br>
 
-    <label for="team"> Enter the Team's Number</label> <br>
-    <input type="text" placeholder="ex. 4795" required id="team">
+        <p class="autonomous">Auto:</p>
+        <label for="Mobility">Did the Robot Move in Auto?</label>
+        <input type="checkbox" id="Mobility" name="Mobility"><br>
+        <input type="text" id="Amp" name="Amp" placeholder="Amp Notes Scored"><br>
+        <input type="text" id="AmpMissed" name="AmpMissed" placeholder="Amp Notes Missed"><br>
+        <input type="text" id="Speaker" name="Speaker" placeholder="Speaker Notes Scored"><br>
+        <input type="text" id="SpeakerMissed" name="SpeakerMissed" placeholder="Speaker Notes Missed"><br>
+        <label for="PictureOfAuto">Upload a picture of the auto path:</label>
+        <input type="file" id="PictureOfAuto" name="PictureOfAuto"><br>
 
-    <p class="autonomous">
-        Auto:
-    </p>
-
-    <form id="auto">
-        <label for="Mobility"> Did the Robot Move in Auto?</label>
-        <input type="checkbox" id="Mobility"> <br>
-        <input type="text" placeholder="Amp Notes Scored" class="Amp" id = "Amp"> 
-        <input type="text" placeholder="Amp Notes Missed" class="Amp" id = "AmpMissed"> <br>
-        <input type="text" placeholder="Speaker Notes Scored" class="Speaker" id = "Speaker"> 
-        <input type="text" placeholder="Speaker Notes Missed" class="Speaker" id = "SpeakerMissed"> <br>
-        <label for="PictureOfAuto">Upload a picture of the auto path: </label>
-        <input type="file" id="PictureOfAuto">
-
-    </form>
-
-    <p class="Teleoperated"> Teleop:</p>
-
-    <form id="Teleop">
-        <input type="text" placeholder="Amp Notes Scored" class="Amp"> <br>
-        <input type="text" placeholder="Speaker Notes Scored" class="Speaker"> <br>
+        <p class="Teleoperated">Teleop:</p>
+        <input type="text" id="AmpTeleop" name="AmpTeleop" placeholder="Amp Notes Scored"><br>
+        <input type="text" id="AmpTeleopMissed" name="AmpTeleopMissed" placeholder="Amp Notes Scored Missed"><br>
+        <input type="text" id="SpeakerTeleop" name="SpeakerTeleop" placeholder="Amp Notes Scored"><br>
+        <input type="text" id="SpeakerTeleopMissed" name="SpeakerTeleopMissed"
+            placeholder="Speaker Notes Scored Missed"><br>
         <p class="questionAboutDefense">Did they play defense?</p>
         <label>
-            <input type="radio" name="Defense">
-            Yes
+            <input type="radio" name="Defense" value="Yes"> Yes
         </label><br>
         <label>
-            <input type="radio" name="Defense">
-            No
+            <input type="radio" name="Defense" value="No"> No
         </label><br>
-        <p> Were there any penalties?</p>
+        <p>Were there any penalties?</p>
         <label>
-            <input type="radio" name="Penalties">
-            Yes
+            <input type="radio" name="Penalties" value="Yes"> Yes
         </label><br>
         <label>
-            <input type="radio" name="Penalties">
-            No
+            <input type="radio" name="Penalties" value="No"> No
         </label><br>
 
         <p>Comments About the Robot:</p>
-        <input type="text" placeholder="Comments">
-    </form>
+        <input type="text" id="Comments" name="Comments" placeholder="Comments"><br>
 
-    <button onclick="generateQRCode()"> Submit </button>
+        <button type="submit">Submit</button>
+    </form>
 
     <div id="qrcode"></div>
 </body>

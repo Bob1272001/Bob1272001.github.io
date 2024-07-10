@@ -1,9 +1,19 @@
+function saveFormData(formData) {
+  localStorage.setItem('formData', JSON.stringify(formData));
+}
 
-function ButtonClicked (){
-    console.log("Hi");
-    console.log("Hello");
-    const x = 5;
-    console.log(x);
+function loadFormData() {
+  const savedFormData = localStorage.getItem('formData');
+  return savedFormData ? JSON.parse(savedFormData) : {};
+}
+
+function updateFormFields(formData) {
+  Object.keys(formData).forEach(key => {
+      const inputElement = document.getElementById(key);
+      if (inputElement) {
+          inputElement.value = formData[key];
+      }
+  });
 }
 
 function generateQRCode(formData) {
@@ -20,30 +30,66 @@ function generateQRCode(formData) {
 
   document.getElementById('qrcode').innerHTML = qrCodeSvg;
 }
-  function handleSubmit(event) {
-    event.preventDefault();
-  
-    const data = new FormData(event.target);
-  
-    // Do a bit of work to convert the entries to a plain JS object
-    const value = Object.fromEntries(data.entries());
-    
-    console.log(JSON.stringify(value));
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const formDataObject = {};
+
+  formData.forEach((value, key) => {
+      formDataObject[key] = value;
+  });
+
+  saveFormData(formDataObject); //local storage data 
+  generateQRCode(formDataObject); 
+
+
+}
+
+window.addEventListener("load", () => {
+  const form = document.getElementById('scoutingForm');
+  const sections = form.querySelectorAll('.section');
+  let currentSectionIndex = 0;
+
+  const savedFormData = loadFormData();
+  updateFormFields(savedFormData);
+
+  function showSection(index) {
+      sections.forEach((section, idx) => {
+          if (idx === index) {
+              section.classList.add('active');
+          } else {
+              section.classList.remove('active');
+          }
+      });
   }
 
-  window.addEventListener("load", () => {  
-    const form = document.getElementById('scoutingForm');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const formData = new FormData(form);
-        const formDataObject = {};
-        
-        formData.forEach((value, key) => {
-            formDataObject[key] = value;
-        });
+  function nextSection() {
+      if (currentSectionIndex < sections.length - 1) {
+          currentSectionIndex++;
+          showSection(currentSectionIndex);
+      }
+  }
 
-        generateQRCode(formDataObject);
-    });
+  function prevSection() {
+      if (currentSectionIndex > 0) {
+          currentSectionIndex--;
+          showSection(currentSectionIndex);
+      }
+  }
+
+  form.addEventListener('submit', handleSubmit);
+
+  document.getElementById('nextBtn').addEventListener('click', function(event) {
+      event.preventDefault();
+      nextSection();
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', function(event) {
+      event.preventDefault();
+      prevSection();
+  });
+
+  showSection(currentSectionIndex);
 });
-  

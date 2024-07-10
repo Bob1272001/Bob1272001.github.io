@@ -10,3 +10,15 @@
 .Amp, .Speaker {
     margin-bottom: 10px;
 }
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+#submitAnotherFormBtn {
+    display: none;
+}

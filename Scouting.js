@@ -1,14 +1,3 @@
-// Scouting.js
-
-function saveFormData(formData) {
-  localStorage.setItem('formData', JSON.stringify(formData));
-}
-
-function loadFormData() {
-  const savedFormData = localStorage.getItem('formData');
-  return savedFormData ? JSON.parse(savedFormData) : {};
-}
-
 function updateFormFields(formData) {
   Object.keys(formData).forEach(key => {
     const inputElement = document.getElementById(key);
@@ -17,20 +6,49 @@ function updateFormFields(formData) {
     }
   });
 }
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      console.log('CSV data copied to clipboard');
+    })
+    .catch(err => {
+      console.error('Failed to copy CSV data to clipboard', err);
+    });
+}
 
 function generateQRCode(formData) {
-  const jsonData = JSON.stringify(formData);
+  const csvData = `Match Number: ${formData.Match}
+Name: ${formData.Name}
+Team Number: ${formData.team}
+Auto Mobility: ${formData.Mobility ? 'Yes' : 'No'}
+Auto Amp Notes Scored: ${formData.Amp}
+Auto Amp Notes Missed: ${formData.AmpMissed}
+Auto Speaker Notes Scored: ${formData.Speaker}
+Auto Speaker Notes Missed: ${formData.SpeakerMissed}
+Teleop Amp Notes Scored: ${formData.AmpTeleop}
+Teleop Amp Notes Missed: ${formData.AmpTeleopMissed}
+Teleop Speaker Notes Scored: ${formData.SpeakerTeleop}
+Teleop Speaker Notes Missed: ${formData.SpeakerTeleopMissed}
+Defense Played: ${formData.Defense === 'Yes' ? 'Yes' : 'No'}
+Penalties: ${formData.Penalties === 'Yes' ? 'Yes' : 'No'}
+Comments: ${formData.Comments}`;
 
-  // Generate QR Code from JSON data
-  var typeNumber = 20;
-  var errorCorrectionLevel = 'L';
+  // Generate QR Code from CSV data
+  var typeNumber = 14;  // Use a higher type number for larger data capacity
+  var errorCorrectionLevel = 'L';  // Use highest error correction level for robustness
   var qr = qrcode(typeNumber, errorCorrectionLevel);
-  qr.addData(jsonData);
+  qr.addData(csvData);
   qr.make();
 
-  var qrCodeSvg = qr.createSvgTag();
+  var qrCodeSvg = qr.createSvgTag({ cellSize: 6, margin: 2 });
 
   document.getElementById('qrcode').innerHTML = qrCodeSvg;
+  document.getElementById('qrcode').style.display = 'block';  // Ensure the QR code is visible
+  document.getElementById('qrcode').style.width = '100%';  // Make QR code div larger
+  document.getElementById('qrcode').style.height = 'auto';  // Maintain aspect ratio
+
+  // Copy CSV data to clipboard
+  copyToClipboard(csvData);
 }
 
 function clearFormData() {
@@ -64,23 +82,23 @@ function handleSubmit(event) {
   });
 
   generateQRCode(formDataObject); 
-  saveFormData(formDataObject); 
-  clearFormData(); 
 
-  // Show the submit another form button
+  document.getElementById('scoutingForm').style.display = 'none';
+  document.getElementById('qrcode').style.display = 'block';
+
   document.getElementById('submitAnotherFormBtn').style.display = 'block';
 }
 
 function submitAnotherForm() {
-
   localStorage.removeItem('formData');
   document.getElementById('scoutingForm').reset();
   document.getElementById('section1').classList.add('active');
-  document.getElementById('section2').classList.remove('active');
-  document.getElementById('section3').classList.remove('active');
-  // Hide the submit another form button
-  document.getElementById('submitAnotherFormBtn').style.display = 'none';
+
+  document.getElementById('scoutingForm').style.display = 'block';
   document.getElementById('qrcode').style.display = 'none';
+  document.getElementById('qrcode').innerHTML = '';
+
+  document.getElementById('submitAnotherFormBtn').style.display = 'none';
 }
 
 window.addEventListener("load", () => {
@@ -88,9 +106,6 @@ window.addEventListener("load", () => {
   const sections = form.querySelectorAll('.section');
 
   let currentSectionIndex = 0;
-
-  const savedFormData = loadFormData();
-  updateFormFields(savedFormData);
 
   function showSection(index) {
     sections.forEach((section, idx) => {
@@ -134,7 +149,6 @@ window.addEventListener("load", () => {
 
   showSection(currentSectionIndex);
 
-  // Bind click event to Submit Another Form button
   document.getElementById('submitAnotherFormBtn').addEventListener('click', function(event) {
     event.preventDefault();
     submitAnotherForm();

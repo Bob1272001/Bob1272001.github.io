@@ -6,6 +6,7 @@ function updateFormFields(formData) {
     }
   });
 }
+
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text)
     .then(() => {
@@ -133,14 +134,14 @@ window.addEventListener("load", () => {
 
   form.addEventListener('submit', handleSubmit);
 
-  document.querySelectorAll('#nextBtn').forEach(btn => {
+  document.querySelectorAll('.nextBtn').forEach(btn => {
     btn.addEventListener('click', function(event) {
       event.preventDefault();
       nextSectionHandler();
     });
   });
 
-  document.querySelectorAll('#prevBtn').forEach(btn => {
+  document.querySelectorAll('.prevBtn').forEach(btn => {
     btn.addEventListener('click', function(event) {
       event.preventDefault();
       prevSectionHandler();

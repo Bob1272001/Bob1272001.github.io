@@ -22,15 +22,3 @@
 #submitAnotherFormBtn {
     display: none;
 }
-#qrcode {
-    display: none;
-    width: 100%;
-    height: auto;
-    text-align: center;
-  }
-  
-  #submitAnotherFormBtn {
-    display: none;
-    margin-top: 20px;
-  }
-  

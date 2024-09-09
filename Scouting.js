@@ -1,5 +1,3 @@
-// Scouting.js
-
 function saveFormData(formData) {
   localStorage.setItem('formData', JSON.stringify(formData));
 }
@@ -31,6 +29,9 @@ function generateQRCode(formData) {
   var qrCodeSvg = qr.createSvgTag();
 
   document.getElementById('qrcode').innerHTML = qrCodeSvg;
+
+  // Hide the form to display QR code prominently
+  document.getElementById('scoutingForm').style.display = 'none';
 }
 
 function clearFormData() {
@@ -72,13 +73,16 @@ function handleSubmit(event) {
 }
 
 function submitAnotherForm() {
-
   localStorage.removeItem('formData');
   document.getElementById('scoutingForm').reset();
   document.getElementById('section1').classList.add('active');
   document.getElementById('section2').classList.remove('active');
   document.getElementById('section3').classList.remove('active');
-  // Hide the submit another form button
+  
+  // Show the form again
+  document.getElementById('scoutingForm').style.display = 'block';
+  
+  // Hide the submit another form button and QR code
   document.getElementById('submitAnotherFormBtn').style.display = 'none';
   document.getElementById('qrcode').style.display = 'none';
 }

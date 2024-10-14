@@ -1,1 +1,1 @@
-Scouting website for 4795 online, QR code generation for data input
+Different types of data input

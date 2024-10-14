@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4795 Scouting Data Input</title>
     <link rel="stylesheet" href="Scouting.css">
     <script src="Scouting.js" defer></script>
@@ -16,14 +18,14 @@
 
         <!-- Section 1: Scouter/Robot Information -->
         <div class="section active" id="section1">
-            <label for="Match">Enter the match number:</label><br>
-            <input type="text" id="Match" name="Match" placeholder="ex. Q24"><br>
+            <label for="Match">Enter the match number:</label>
+            <input type="text" id="Match" name="Match" placeholder="ex. Q24">
 
-            <label for="Name">Enter your name:</label><br>
-            <input type="text" id="Name" name="Name" placeholder="Scouter" required><br>
+            <label for="Name">Enter your name:</label>
+            <input type="text" id="Name" name="Name" placeholder="Scouter" required>
 
-            <label for="team">Enter the Team's Number:</label><br>
-            <input type="text" id="team" name="team" placeholder="ex. 4795" required><br>
+            <label for="team">Enter the Team's Number:</label>
+            <input type="text" id="team" name="team" placeholder="ex. 4795" required>
 
             <button type="button" class="nextBtn">Next</button>
         </div>
@@ -32,11 +34,19 @@
         <div class="section" id="section2">
             <p class="autonomous">Auto:</p>
             <label for="Mobility">Did the Robot Move in Auto?</label>
-            <input type="checkbox" id="Mobility" name="Mobility"><br>
-            <input type="text" id="Amp" name="Amp" placeholder="Amp Notes Scored"><br>
-            <input type="text" id="AmpMissed" name="AmpMissed" placeholder="Amp Notes Missed"><br>
-            <input type="text" id="Speaker" name="Speaker" placeholder="Speaker Notes Scored"><br>
-            <input type="text" id="SpeakerMissed" name="SpeakerMissed" placeholder="Speaker Notes Missed"><br>
+            <input type="checkbox" id="Mobility" name="Mobility">
+
+            <label for="Amp">Amp Notes Scored:</label>
+            <input type="text" id="Amp" name="Amp" placeholder="Amp Notes Scored">
+
+            <label for="AmpMissed">Amp Notes Missed:</label>
+            <input type="text" id="AmpMissed" name="AmpMissed" placeholder="Amp Notes Missed">
+
+            <label for="Speaker">Speaker Notes Scored:</label>
+            <input type="text" id="Speaker" name="Speaker" placeholder="Speaker Notes Scored">
+
+            <label for="SpeakerMissed">Speaker Notes Missed:</label>
+            <input type="text" id="SpeakerMissed" name="SpeakerMissed" placeholder="Speaker Notes Missed">
 
             <button type="button" class="prevBtn">Previous</button>
             <button type="button" class="nextBtn">Next</button>
@@ -45,28 +55,29 @@
         <!-- Section 3: Teleoperated Period -->
         <div class="section" id="section3">
             <p class="Teleoperated">Teleop:</p>
-            <input type="text" id="AmpTeleop" name="AmpTeleop" placeholder="Amp Notes Scored"><br>
-            <input type="text" id="AmpTeleopMissed" name="AmpTeleopMissed" placeholder="Amp Notes Scored Missed"><br>
-            <input type="text" id="SpeakerTeleop" name="SpeakerTeleop" placeholder="Speaker Notes Scored"><br>
-            <input type="text" id="SpeakerTeleopMissed" name="SpeakerTeleopMissed"
-                placeholder="Speaker Notes Scored Missed"><br>
-            <p class="questionAboutDefense">Did they play defense?</p>
-            <label>
-                <input type="radio" name="Defense" value="Yes"> Yes
-            </label><br>
-            <label>
-                <input type="radio" name="Defense" value="No"> No
-            </label><br>
-            <p>Were there any penalties?</p>
-            <label>
-                <input type="radio" name="Penalties" value="Yes"> Yes
-            </label><br>
-            <label>
-                <input type="radio" name="Penalties" value="No"> No
-            </label><br>
+            <label for="AmpTeleop">Amp Notes Scored:</label>
+            <input type="text" id="AmpTeleop" name="AmpTeleop" placeholder="Amp Notes Scored">
 
-            <p>Comments About the Robot:</p>
-            <input type="text" id="Comments" name="Comments" placeholder="Comments"><br>
+            <label for="AmpTeleopMissed">Amp Notes Scored Missed:</label>
+            <input type="text" id="AmpTeleopMissed" name="AmpTeleopMissed" placeholder="Amp Notes Scored Missed">
+
+            <label for="SpeakerTeleop">Speaker Notes Scored:</label>
+            <input type="text" id="SpeakerTeleop" name="SpeakerTeleop" placeholder="Speaker Notes Scored">
+
+            <label for="SpeakerTeleopMissed">Speaker Notes Scored Missed:</label>
+            <input type="text" id="SpeakerTeleopMissed" name="SpeakerTeleopMissed"
+                placeholder="Speaker Notes Scored Missed">
+
+            <label for="Defense">Did they play defense?</label>
+            <label><input type="radio" name="Defense" value="Yes"> Yes</label>
+            <label><input type="radio" name="Defense" value="No"> No</label>
+
+            <label for="Penalties">Were there any penalties?</label>
+            <label><input type="radio" name="Penalties" value="Yes"> Yes</label>
+            <label><input type="radio" name="Penalties" value="No"> No</label>
+
+            <label for="Comments">Comments About the Robot:</label>
+            <input type="text" id="Comments" name="Comments" placeholder="Comments">
 
             <button type="button" class="prevBtn">Previous</button>
             <button type="submit">Submit</button>

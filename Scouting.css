@@ -7,69 +7,49 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 20px;
-    font-size: 28px;
+    margin-top: 10px;
+    font-size: 24px;
     color: #333;
 }
 
 form {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 label {
     font-weight: bold;
-    display: block;
     margin-bottom: 5px;
+    display: block;
 }
 
-input[type="text"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 20px;
+input[type="text"], input[type="checkbox"], input[type="radio"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-    margin-right: 10px;
-}
-
-input[type="radio"] + label,
-input[type="checkbox"] + label {
-    font-weight: normal;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 button {
     background-color: #2980b9;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
-    display: inline-block;
+    width: 100%;
 }
 
 button:hover {
     background-color: #3498db;
-}
-
-#submitAnotherFormBtn {
-    display: none;
-    margin: 0 auto;
-    background-color: #e74c3c;
-}
-
-#submitAnotherFormBtn:hover {
-    background-color: #c0392b;
 }
 
 .section {
@@ -83,37 +63,27 @@ button:hover {
 /* QR Code Styling */
 #qrcode {
     text-align: center;
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 #qrcode svg {
-    width: 80%;
-    max-width: 400px;  /* Limit maximum size for large screens */
+    width: 100%;
+    max-width: 350px;
     height: auto;
 }
 
-/* Responsive Design */
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
     form {
-        padding: 10px;
         width: 95%;
+        padding: 10px;
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 20px;
     }
 
-    button {
-        width: 100%;
-        font-size: 18px;
-    }
-
-    input[type="text"] {
-        width: 100%;
+    input[type="text"], input[type="checkbox"], input[type="radio"], button {
         font-size: 14px;
-    }
-
-    #qrcode {
-        margin-top: 20px;
+        padding: 8px;
     }
 }

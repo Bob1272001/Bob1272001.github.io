@@ -43,7 +43,9 @@ function nextSection() {
   const nextSection = currentSection.nextElementSibling;
 
   currentSection.classList.remove('active');
-  nextSection.classList.add('active');
+  if (nextSection) {
+    nextSection.classList.add('active');
+  }
 }
 
 function prevSection() {
@@ -51,7 +53,9 @@ function prevSection() {
   const prevSection = currentSection.previousElementSibling;
 
   currentSection.classList.remove('active');
-  prevSection.classList.add('active');
+  if (prevSection) {
+    prevSection.classList.add('active');
+  }
 }
 
 function handleSubmit(event) {
@@ -68,7 +72,6 @@ function handleSubmit(event) {
   saveFormData(formDataObject); 
   clearFormData(); 
 
-  // Show the submit another form button
   document.getElementById('submitAnotherFormBtn').style.display = 'block';
 }
 
@@ -76,13 +79,14 @@ function submitAnotherForm() {
   localStorage.removeItem('formData');
   document.getElementById('scoutingForm').reset();
   document.getElementById('section1').classList.add('active');
-  document.getElementById('section2').classList.remove('active');
-  document.getElementById('section3').classList.remove('active');
+  document.querySelectorAll('.section').forEach((section, idx) => {
+    if (idx !== 0) {
+      section.classList.remove('active');
+    }
+  });
   
-  // Show the form again
   document.getElementById('scoutingForm').style.display = 'block';
   
-  // Hide the submit another form button and QR code
   document.getElementById('submitAnotherFormBtn').style.display = 'none';
   document.getElementById('qrcode').style.display = 'none';
 }

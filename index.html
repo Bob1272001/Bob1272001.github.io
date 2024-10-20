@@ -83,12 +83,26 @@
                 placeholder="Speaker Notes Scored Missed">
 
             <label for="Defense">Did they play defense?</label>
-            <label><input type="radio" name="Defense" value="Yes"> Yes</label>
-            <label><input type="radio" name="Defense" value="No"> No</label>
+            <label class="radio-inline"><input type="radio" name="Defense" value="Yes"> Yes</label>
+            <label class="radio-inline"><input type="radio" name="Defense" value="No"> No</label>
 
             <label for="Penalties">Were there any penalties?</label>
-            <label><input type="radio" name="Penalties" value="Yes"> Yes</label>
-            <label><input type="radio" name="Penalties" value="No"> No</label>
+            <label class="radio-inline"><input type="radio" name="Penalties" value="Yes"> Yes</label>
+            <label class="radio-inline"><input type="radio" name="Penalties" value="No"> No</label>
+
+            <button type="button" class="prevBtn">Previous</button>
+            <button type="button" class="nextBtn">Next</button>
+        </div>
+
+        <!-- Section 4: Endgame -->
+        <div class="section" id="section4">
+            <p class="Endgame">Endgame:</p>
+            <label for="Endgame">Endgame Outcome:</label>
+
+            <label class="radio-inline"><input type="radio" name="Endgame" value="Not Attempted"> Not Attempted</label>
+            <label class="radio-inline"><input type="radio" name="Endgame" value="Parked"> Parked</label>
+            <label class="radio-inline"><input type="radio" name="Endgame" value="Climbed"> Climbed</label>
+            <label class="radio-inline"><input type="radio" name="Endgame" value="Trap"> Trap</label>
 
             <label for="Comments">Comments About the Robot:</label>
             <input type="text" id="Comments" name="Comments" placeholder="Comments">
@@ -96,6 +110,7 @@
             <button type="button" class="prevBtn">Previous</button>
             <button type="submit">Submit</button>
         </div>
+
 
     </form>
 

@@ -27,8 +27,21 @@ label {
     display: block;
 }
 
-input[type="text"], input[type="checkbox"], input[type="radio"] {
-    width: 100%;
+/* Remove flex and align radio buttons next to the text */
+label.radio-inline {
+    display: inline-block; /* Align label and input next to each other */
+    margin-right: 10px;
+    margin-bottom: 7px; /* Reduce the space between radio button options */
+}
+
+label.radio-inline input[type="radio"] {
+    margin-right: 5px; /* Small space between radio button and text */
+    vertical-align: middle; /* Align the radio button with the label text */
+}
+
+/* For text inputs and checkboxes */
+input[type="text"], input[type="checkbox"] {
+    width: 100%; /* Full width for text and checkbox inputs */
     padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -37,6 +50,7 @@ input[type="text"], input[type="checkbox"], input[type="radio"] {
     box-sizing: border-box;
 }
 
+/* Adjust button styling */
 button {
     background-color: #2980b9;
     color: white;
@@ -45,13 +59,22 @@ button {
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
+    width: 100%; /* Make buttons take the full width */
+    margin-top: 10px; /* Add spacing above buttons */
 }
 
 button:hover {
     background-color: #3498db;
 }
 
+/* For Next and Previous buttons specifically */
+.prevBtn, .nextBtn {
+    display: inline-block;
+    width: auto;
+    margin: 5px 10px;
+}
+
+/* Hide sections except active one */
 .section {
     display: none;
 }
@@ -72,6 +95,7 @@ button:hover {
     height: auto;
 }
 
+/* Responsive Design */
 @media (max-width: 600px) {
     form {
         width: 95%;
@@ -82,8 +106,12 @@ button:hover {
         font-size: 20px;
     }
 
-    input[type="text"], input[type="checkbox"], input[type="radio"], button {
+    input[type="text"], input[type="checkbox"], button {
         font-size: 14px;
         padding: 8px;
+    }
+
+    button {
+        width: 100%; /* Ensure buttons are full width on mobile */
     }
 }

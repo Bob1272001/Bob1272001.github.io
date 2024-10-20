@@ -1,10 +1,10 @@
-const CACHE_NAME = 'v1';
+const CACHE_NAME = 'v1'; //update version every change
 const CACHE_ASSETS = [
-  '/',
+  '/', //files
   '/index.html',
   '/Scouting.css',
   '/Scouting.js',
-  'https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js' // External library
+  'https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js' // External librarys
 ];
 
 // Install event

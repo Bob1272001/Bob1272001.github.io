@@ -68,9 +68,24 @@ function handleSubmit(event) {
     formDataObject[key] = value;
   });
 
-  generateQRCode(formDataObject); 
+  // Set Mobility value to 1 if checked, otherwise 0
+  formDataObject.Mobility = document.getElementById('Mobility').checked ? 1 : 0;
+
+  // Handle Endgame: Allow multiple selections
+  formDataObject.Parked = document.querySelector('input[name="Endgame"][value="Parked"]').checked ? 1 : 0;
+  formDataObject.Climbed = document.querySelector('input[name="Endgame"][value="Climbed"]').checked ? 1 : 0;
+  formDataObject.Trap = document.querySelector('input[name="Endgame"][value="Trap"]').checked ? 1 : 0;
+
+  // Add Disabled and Under Stage fields
+  formDataObject.Disabled = document.getElementById('Disabled').checked ? 1 : 0;
+  formDataObject.UnderStage = document.getElementById('UnderStage').checked ? 1 : 0;
+
+  // Concatenate Scouter Name with Comments
+  formDataObject.Comments = `${formDataObject.Name}: ${formDataObject.Comments}`;
+
+  generateQRCode(formDataObject);
   saveFormData(formDataObject); 
-  clearFormData(); 
+  clearFormData();
 
   document.getElementById('submitAnotherFormBtn').style.display = 'block';
 }

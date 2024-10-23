@@ -70,22 +70,19 @@ function handleSubmit(event) {
 
   // Calculate total made shots for Auto
   formDataObject.totalAutoMadeShots = 
-  (parseInt(formDataObject.Amp || 0) + parseInt(formDataObject.Speaker || 0));
+  (parseInt(formDataObject.Amp || 0) + parseInt(formDataObject.Speaker || 0) + parseInt(formDataObject.AmpMissed || 0) + parseInt(formDataObject.SpeakerMissed || 0));
 
   // Calculate total made shots for Teleop
   formDataObject.totalTeleopMadeShots = 
-  (parseInt(formDataObject.AmpTeleop || 0) + parseInt(formDataObject.SpeakerTeleop || 0));
+  (parseInt(formDataObject.AmpTeleop || 0) + parseInt(formDataObject.SpeakerTeleop || 0) + parseInt(formDataObject.AmpTeleopMissed || 0) + parseInt(formDataObject.SpeakerTeleopMissed || 0));
 
 
-  // Set Mobility value to 1 if checked, otherwise 0
   formDataObject.Mobility = document.getElementById('Mobility').checked ? 1 : 0;
 
-  // Handle Endgame: Allow multiple selections
   formDataObject.Parked = document.querySelector('input[name="Endgame"][value="Parked"]').checked ? 1 : 0;
   formDataObject.Climbed = document.querySelector('input[name="Endgame"][value="Climbed"]').checked ? 1 : 0;
   formDataObject.Trap = document.querySelector('input[name="Endgame"][value="Trap"]').checked ? 1 : 0;
 
-  // Add Disabled and Under Stage fields
   formDataObject.Disabled = document.getElementById('Disabled').checked ? 1 : 0;
   formDataObject.UnderStage = document.getElementById('UnderStage').checked ? 1 : 0;
 

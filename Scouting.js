@@ -68,6 +68,15 @@ function handleSubmit(event) {
     formDataObject[key] = value;
   });
 
+  // Calculate total made shots for Auto
+  formDataObject.totalAutoMadeShots = 
+  (parseInt(formDataObject.Amp || 0) + parseInt(formDataObject.Speaker || 0));
+
+  // Calculate total made shots for Teleop
+  formDataObject.totalTeleopMadeShots = 
+  (parseInt(formDataObject.AmpTeleop || 0) + parseInt(formDataObject.SpeakerTeleop || 0));
+
+
   // Set Mobility value to 1 if checked, otherwise 0
   formDataObject.Mobility = document.getElementById('Mobility').checked ? 1 : 0;
 
